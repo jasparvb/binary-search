@@ -17,15 +17,14 @@ function sortedFrequency(arr, val) {
       // middleVal is too large, look at the left half
       rightIdx = middleIdx - 1;
     } else if (middleVal === val && (arr[middleIdx - 1] < val || !arr[middleIdx - 1])) {
-      // middleVal is too large, look at the left half
+      // we found our value for the left index!
       leftIdxFinal = middleIdx;
       leftIdx = rightIdx + 1;
     } else {
-      // we found our value!
       rightIdx = middleIdx - 1;
     }
   }
-  //Find right index
+  //update right and left index
   leftIdx = leftIdxFinal;
   rightIdx = arr.length - 1;
 
@@ -35,14 +34,13 @@ function sortedFrequency(arr, val) {
     let middleVal = arr[middleIdx];
 
     if (middleVal === val && (arr[middleIdx + 1] > val || !arr[middleIdx + 1])) {
-      // middleVal is too small, look at the right half
+      // we found our value
       rightIdxFinal = middleIdx;
       leftIdx = rightIdx + 1;
     } else if (middleVal > val) {
       // middleVal is too large, look at the left half
       rightIdx = middleIdx - 1;
     } else {
-      // middleVal is too large, look at the left half
       leftIdx = middleIdx + 1;
     }
   }
